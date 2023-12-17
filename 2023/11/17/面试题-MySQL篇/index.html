@@ -1,0 +1,560 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MySQL篇 | Velocity的个人博客</title><meta name="author" content="Velocity"><meta name="copyright" content="Velocity"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="MySQL篇面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL篇">
+<meta property="og:url" content="https://www.velocityoc.top/2023/11/17/%E9%9D%A2%E8%AF%95%E9%A2%98-MySQL%E7%AF%87/index.html">
+<meta property="og:site_name" content="Velocity的个人博客">
+<meta property="og:description" content="MySQL篇面试题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://source.fomal.cc/img/default_cover_2.webp">
+<meta property="article:published_time" content="2023-11-17T12:34:03.755Z">
+<meta property="article:modified_time" content="2023-11-21T09:37:45.691Z">
+<meta property="article:author" content="Velocity">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://source.fomal.cc/img/default_cover_2.webp"><link rel="shortcut icon" href="https://www.fomal.cc/favicon.ico"><link rel="canonical" href="https://www.velocityoc.top/2023/11/17/%E9%9D%A2%E8%AF%95%E9%A2%98-MySQL%E7%AF%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-21 17:37:45'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><span id="fps"></span><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/cat.css"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="/css/runtime.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.fomal.cc/assets/head.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://source.fomal.cc/img/default_cover_2.webp')"><nav id="nav"><span id="blog-info"><a href="/" title="Velocity的个人博客"><span class="site-name">Velocity的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-17T12:34:03.755Z" title="发表于 2023-11-17 20:34:03">2023-11-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-21T09:37:45.691Z" title="更新于 2023-11-21 17:37:45">2023-11-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5585</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MySQL篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="MySQL篇"><a href="#MySQL篇" class="headerlink" title="MySQL篇"></a><center>MySQL篇</center></h1><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/MySQL场景.jpg">
+
+<h2 id="MySQL-优化"><a href="#MySQL-优化" class="headerlink" title="MySQL-优化"></a>MySQL-优化</h2><h3 id="在MySQL中，如何定位慢查询"><a href="#在MySQL中，如何定位慢查询" class="headerlink" title="在MySQL中，如何定位慢查询?"></a>在MySQL中，如何定位慢查询?</h3><p>聚合查询<br>多表查询<br>表数据量过大查询<br>深度分页查询</p>
+<p>表象:页面加载过慢、接口压测响应时间过长(超过1s)</p>
+<p>如何定位慢查询 ?<br><strong>方案一：</strong>开源工具<br>调试工具: Arthas<br>运维工具: Prometheus、Skywalking<br><strong>方案二：</strong> MySQL自带慢日志<br>慢查询日志记录了所有执行时间超过指定参数 (long_query_time，单位:秒，默认10秒)的所有SQL语句的日志如果要开启慢查询日志，需要在MySQL的配置文件(&#x2F;etc&#x2F;my.cnf)中配置如下信息:<br>开启MySQL慢日志查询开关<br>slow_query_log&#x3D;1<br>设置慢日志的时间为2秒，SQL语句执行时间超过2秒，就会视为慢查询，记录慢查询日志<br>long_query_time&#x3D;2<br>配置完毕之后，通过以下指令重新启动MySQL服务器进行测试，查看慢日志文件中记录的信息<br>&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;localhost-slow.log</p>
+<p><strong>总结：</strong></p>
+<ol>
+<li>介绍一下当时产生问题的场景(我们当时的一个接口测试的时候非常的慢，压测的结果大概5秒钟)</li>
+<li>我们系统中当时采用了运维工具 ( Skywalking )，可以监测出哪个接口，最终因为是sql的问题</li>
+<li>在mysql中开启了慢日志查询，我们设置的值就是2秒，一旦sql执行超过2秒就会记录到日志中(调试阶段)</li>
+</ol>
+<h3 id="那这个SQL语句执行很慢-如何分析呢"><a href="#那这个SQL语句执行很慢-如何分析呢" class="headerlink" title="那这个SQL语句执行很慢,如何分析呢?"></a>那这个SQL语句执行很慢,如何分析呢?</h3><p>一个SQL语句执行很慢, 如何分析<br>可以采用EXPLAIN 或者 DESC命令获取 MySQL 如何执行 SELECT 语句的信息</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/慢SQL.jpg">
+possible_key 当前sql可能会使用到的索引
+key 当前sql实际命中的索引
+key_len索占用的大小
+Extra额外的优化建议
+通过key和key_len 查看是否可能会命中索引
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/Extra.jpg">
+type 这条sql的连接的类型，性能由好到差为NULL、system、const、eq_ref、ref、range  index、all
+system：查询系统中的表
+const：根据主键查询
+eq_ref：主键索引查询或唯一索引查询ref:索引查询
+range：范围查询
+index：索引树扫描
+all：全盘扫描
+
+<p><strong>总结：</strong><br>可以采用MySQL自带的分析工具EXPLAIN<br>通过key和key_len检查是否命中了索引(索引本身存在是否有失效的情况)<br>通过type字段查看sql是否有进一步的优化空间，是否存在全索引扫描或全盘扫描<br>通过extra建议判断，是否出现了回表的情况，如果出现了，可以尝试添加索引或修改返回字段来修复</p>
+<h3 id="了解过索引吗-什么是索引"><a href="#了解过索引吗-什么是索引" class="headerlink" title="了解过索引吗?(什么是索引)"></a>了解过索引吗?(什么是索引)</h3><p>索引(index)是帮助MySQL高效获取数据的数据结构(有序)。在数据之外，数据库系统还维护着满足特定查找算法的数据结构(B+树)，这些数据结构以某种方式引用(指向)数据， 这样就可以在这些数据结构上实现高级查找算法，这种数据结构就是索引。</p>
+<p><strong>索引的底层数据结构了解过嘛 ?</strong><br>B+树<br>B+Tree是在BTree基础上的一种优化，使其更适合实现外存储索引结构，lnnoDB存储引擎就是用B+Tree实现其索引结构<br>B树与B+树对比:</p>
+<ol>
+<li>磁盘读写代价B+树更低;</li>
+<li>查询效率B+树更加稳定;</li>
+<li>B+树便于扫库和区间查询</li>
+</ol>
+<p><strong>总结：</strong><br>索引(index)是帮助MySQL高效获取数据的数据结构(有序)<br>提高数据检索的效率，降低数据库的IO成本(不需要全表扫描)<br>通过索引列对数据进行排序，降低数据排序的成本，降低了CPU的消耗</p>
+<p>MySQL的InnoDB引采用的B+树的数据结构来存储索引<br>阶数更多，路径更短<br>磁盘读写代价B+树更低，非叶子节点只存储指针，叶子阶段存储数据<br>B+树便于扫库和区间查询，叶子节点是一个双向链表</p>
+<h3 id="什么是聚簇索引什么是非聚簇索引"><a href="#什么是聚簇索引什么是非聚簇索引" class="headerlink" title="什么是聚簇索引什么是非聚簇索引?"></a>什么是聚簇索引什么是非聚簇索引?</h3><p>什么是聚集索引，什么是二级索引(非聚集索引)<br>什么是回表?<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/聚集索引.jpg"></p>
+<p><strong>聚集索引选取规则:</strong><br>如果存在主键，主键索引就是聚集索引。<br>如果不存在主键，将使用第一个唯一(UNIQUE)索作为聚集索引。<br>如果表没有主键，或没有合适的唯一索引，则InnoDB会自动生成一个rowid作为隐藏的聚集索引。</p>
+<p><strong>总结：</strong><br>聚簇索引(聚集索引):数据与索引放到一块，B+树的叶子节点保存了整行数据，有且只有一个<br>非聚簇索引(二级索引):数据与索引分开存储，B+树的叶子节点保存对应的主键，可以有多个<br>通过二级索引找到对应的主键值，到聚集索引中查找整行数据，这个过程就是回表</p>
+<h3 id="知道什么叫覆盖索引嘛"><a href="#知道什么叫覆盖索引嘛" class="headerlink" title="知道什么叫覆盖索引嘛?"></a>知道什么叫覆盖索引嘛?</h3><p><strong>覆盖索引</strong>是指查询使用了索引，并且需要返回的列，在该索引中已经全部能够找到</p>
+<h3 id="MYSQL超大分页怎么处理"><a href="#MYSQL超大分页怎么处理" class="headerlink" title="MYSQL超大分页怎么处理 ?"></a>MYSQL超大分页怎么处理 ?</h3><p>可以使用覆盖索引解决<br>在数据量比较大时，如果进行limit分页查询，在查询时，越往后，分页查询效率越低。<br>因为，当在进行分页查询时，如果执行 limit 9000000,10，此时需要MySQL排序前9000010 记录，仅仅返回9000000- 9000010 的记录，其他记录丢弃，查询排序的代价非常大。</p>
+<p>优化思路: 一般分页查询时，通过创建 覆盖索引能够比较好地提高性能，可以通过覆盖索引加子查询形式进行优化</p>
+<p><strong>总结：</strong><br>覆盖索引是指查询使用了索引，返回的列，必须在索引中全部能够找到</p>
+<ol>
+<li>使用id查询，直接走聚集索引查询，一次索引扫描，直接返回数据，性能高。</li>
+<li>如果返回的列中没有创建索引，有可能会触发回表查询，尽量避免使用select *<br>MYSQL超大分页怎么处理?<br>在数据量比较大时，limit分页查询，需要对数据进行排序，效率低题:<br>覆盖索引+子查询</li>
+</ol>
+<h3 id="索引创建原则有哪些？"><a href="#索引创建原则有哪些？" class="headerlink" title="索引创建原则有哪些？"></a>索引创建原则有哪些？</h3><ol>
+<li>先陈述自己在实际的工作中是怎么用的</li>
+<li>主键索</li>
+<li>唯一索引</li>
+<li>根据业务创建的索(复合索引)</li>
+</ol>
+<p><strong>索引创建原则有哪些？</strong><br><strong>1).</strong> 针对于数据量较大，且查询比较频繁的表建立索引。单表超过10万数据(增加用户体验)<br><strong>2).</strong> 针对于常作为查询条件 (where)、排序 (order by)、分组 (group by) 操作的字段建立索引。<br><strong>3).</strong> 尽量选择区分度高的列作为索引，尽量建立唯一索引，区分度越高，使用索引的效率越高。<br><strong>4).</strong> 如果是字符串类型的字段，字段的长度较长，可以针对于字段的特点，建立前缀索引。<br><strong>5).</strong> 尽量使用联合索引，减少单列索引，查询时，联合索引很多时候可以覆盖索引，节省存储空间，避免回表，提高查询效率。<br><strong>6).</strong> 要控制索引的数量，索引并不是多多益善，索引越多，维护索引结构的代价也就越大，会影响增删改的效率。<br><strong>7).</strong> 如果索引列不能存储NULL值，请在创建表时使用NOT ULL约束。当优化器知道每列是否包含NULL值时，它可以更好地确定哪个索引最有效地用于查询。</p>
+<p><strong>总结：</strong><br>1).数据量较大，且查询比较频繁的表      <strong>重要</strong><br>2).常作为查询条件、排序、分组的字段    <strong>重要</strong><br>3).字段内容区分度高<br>4).内容较长，使用前缀索引<br>5).尽量联合索                        <strong>重要</strong><br>6).要控制索引的数量                   <strong>重要</strong><br>7)如果索引列不能存储NULL值，请在创建表时使用NOT NULL约束它</p>
+<h3 id="什么情况下索引会失效？"><a href="#什么情况下索引会失效？" class="headerlink" title="什么情况下索引会失效？"></a>什么情况下索引会失效？</h3><p>索引失效的情况有很多，可以说一些自己遇到过的，不要张口就得得得说一堆背诵好的面试题(适当的思考一下，回想一下，更真实)<br>给tb seller创建联合索引，字段顺序: name，status，address<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/索引.jpg"></p>
+<p>那快读判断索引是否失效了呢?    执行计划explain<br><strong>1).违反最左前缀法则</strong><br>如果索引了多列，要遵守最左前缀法则。指的是查询从索引的最左前列开始，并且不跳过索引中的列。匹配最左前缀法则，走索引；<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/正例索引.jpg"><br>违反最左前缀法则，索引失效：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/反例索引.jpg"><br>如果符合最左法则，但是出现跳跃某一列，只有最左列索引生效：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/最左法则.jpg"></p>
+<p><strong>2).范围查询右边的列，不能使用索引。</strong><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/范围右边列.jpg"><br>根据前面的两个字段 name，status 查询是走索引的，但是最后一个条件address 没有用到索引</p>
+<p><strong>3).不要在索引列上进行运算操作，索引将失效</strong><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/运算失效.jpg"></p>
+<p><strong>4).字符串不加单引号，造成索引失效。</strong><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/单引号索引.jpg"><br>由于，在查询是，没有对字符串加单引号，MySQL的查询优化器，会自动的进行类型转换，造成索引失效。</p>
+<p><strong>5).以%开头的Like模糊查询，索引失效。如果仅仅是尾部模糊匹配，索引不会失效。如果是头部模糊匹配，索引失效。</strong><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/模糊查询.jpg"></p>
+<p><strong>总结：</strong></p>
+<ol>
+<li>违反最左前缀法则</li>
+<li>范围查询右边的列，不能使用索引</li>
+<li>不要在索引列上进行运算操作， 索引将失效</li>
+<li>字符串不加单引号，造成索引失效。(类型转换)</li>
+<li>以%开头的Like模糊查询，索引失效</li>
+</ol>
+<h3 id="谈一谈你对sql的优化的经验"><a href="#谈一谈你对sql的优化的经验" class="headerlink" title="谈一谈你对sql的优化的经验"></a>谈一谈你对sql的优化的经验</h3><ol>
+<li>表的设计优化</li>
+<li>索引优化   参考优化创建原则和索引失效</li>
+<li>SQL语句优化</li>
+<li>主从复制、读写分离</li>
+<li>分库分表</li>
+</ol>
+<p><strong>表的设计优化(参考阿里开发手册《嵩山版》)</strong></p>
+<ol>
+<li>比如设置合适的数值(tinyint int bigint)，要根据实际情况选择</li>
+<li>比如设置合适的字符串类型(char和varchar) char定长效率高，varchar可变长度，效率稍低</li>
+</ol>
+<p><strong>SQL语句优化</strong></p>
+<ol>
+<li>SELECT语句务必指明字段名称 (避免直接使用select *)</li>
+<li>SQL语句要避免造成索引失效的写法</li>
+<li>尽量用union all代替union union会多一次过滤，效率低</li>
+<li>避免在where子句中对字段进行表达式操作</li>
+<li>Join优化 能用innerjoin 就不用left join right join，如必须使用一定要以小表为驱动，内连接会对两个表进行优化，优先把小表放到外边，把大表放到里边。left join 或 right join，不会重新调整顺序</li>
+</ol>
+<p><strong>主从复制、读写分离</strong><br>如果数据库的使用场景读的操作比较多的时候，为了避免写的操作所造成的性能影响 可以采用读写分离的架构。读写分离解决的是，数据库的写入，影响了查询的效率。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/读写分离.jpg"></p>
+<p><strong>总结：</strong></p>
+<ol>
+<li>表的设计优化，数据类型的选择</li>
+<li>索引优化，索引创建原则</li>
+<li>sql语句优化，避免索引失效，避免使用select *….</li>
+<li>主从复制、读写分离，不让数据的写入，影响读操作</li>
+<li>分库分表</li>
+</ol>
+<h2 id="MySQL-事务"><a href="#MySQL-事务" class="headerlink" title="MySQL-事务"></a>MySQL-事务</h2><h3 id="事务的特性是什么-可以详细说一下吗"><a href="#事务的特性是什么-可以详细说一下吗" class="headerlink" title="事务的特性是什么?可以详细说一下吗?"></a>事务的特性是什么?可以详细说一下吗?</h3><p>事务是一组操作的集合，它是一个不可分割的工作单位，事务会把所有的操作作为一个整体一起向系统提交或撤销操作请求，即这些操作要么同时成功，要么同时失败。</p>
+<h3 id="ACID是什么-可以详细说一下吗"><a href="#ACID是什么-可以详细说一下吗" class="headerlink" title="ACID是什么? 可以详细说一下吗?"></a>ACID是什么? 可以详细说一下吗?</h3><ol>
+<li>原子性(Atomicity): 事务是不可分割的最小操作单元，要么全部成功，要么全部失败。</li>
+<li>一致性(Consistency): 事务完成时，必须使所有的数据都保持一致状态。</li>
+<li>隔离性(lsolation): 数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。</li>
+<li>持久性 (Durability):事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。</li>
+</ol>
+<h3 id="并发事务带来哪些问题-怎么解决这些问题呢-MySQL的默认隔离级别是"><a href="#并发事务带来哪些问题-怎么解决这些问题呢-MySQL的默认隔离级别是" class="headerlink" title="并发事务带来哪些问题? 怎么解决这些问题呢? MySQL的默认隔离级别是?"></a>并发事务带来哪些问题? 怎么解决这些问题呢? MySQL的默认隔离级别是?</h3><ol>
+<li>并发事务问题:脏读、不可重复读、幻读</li>
+<li>隔离级别: 读未提交、读已提交、可重复读、串行化</li>
+</ol>
+<p><strong>并发事务问题</strong><br><strong>脏读</strong>：一个事务读到另外一个事务还没有提交的数据<br><strong>不可重复读</strong>：一个事务先后读取同一条记录，但两次读取的数据不同，称之为不可重复读。<br><strong>幻读</strong>：一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据已经存在，好像出现了“幻影”。</p>
+<p><strong>怎么解决并发事务的问题呢?</strong><br>解决方案:对事务进行隔离</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/事务隔离.jpg">
+
+<p><strong>总结：</strong><br>并发事务带来哪些问题? 怎么解决这些问题呢? MySQL的默认隔离级别是?</p>
+<p>并发事务的问题:</p>
+<ol>
+<li>脏读:一个事务读到另外一个事务还没有提交的数据。</li>
+<li>不可重复读:一个事务先后读取同一条记录，但两次读取的数据不同</li>
+<li>幻读:一个事务按照条件查询数据时，没有对应的数据行，但是在插入数据时，又发现这行数据已经存在，好像出现了”幻影”。</li>
+</ol>
+<p>隔离级别:<br>READ UNCOMMITTED 未提交读     脏读、不可重复读、幻读<br>READ COMMITTED 读已提交       不可重复读、幻读<br>REPEATABLE READ 可重复读       幻读<br>SERIALIZABLE 串行化</p>
+<h3 id="undo-log和redo-log的区别"><a href="#undo-log和redo-log的区别" class="headerlink" title="undo log和redo log的区别"></a>undo log和redo log的区别</h3><ol>
+<li><p>缓冲池(bufer pool):主内存中的一个区域，里面可以缓存磁盘上经常操作的真实数据，在执行增删改查操作时，先操作缓冲池中的数据(若缓冲池没有数据，则从磁盘加载并缓存)，以一定频率刷新到磁盘，从而减少磁盘IO，加快处理速度</p>
+</li>
+<li><p>数据页(page):是lnnoDB 存储引擎磁盘管理的最小单元，每个页的大小默认为 16KB。页中存储的是行数据</p>
+</li>
+</ol>
+<p><strong>redo log</strong><br>重做日志，记录的是事务提交时数据页的物理修改，是用来实现事务的持久性<br>该日志文件由两部分组成:重做日志缓冲(redo og bufer)以及重做日志文件(redo og fle),前者是在内存中，后者在磁盘中当事务提交之后会把所有修改信息都存到该日志文件中,用于在刷新脏页到磁盘,发生错误时，进行数据恢复使用。</p>
+<p><strong>undo log</strong><br>回滚日志，用于记录数据被修改前的信息，作用包含两个:提供回滚 和 MVCC(多版本并发控制)。undo og和redo log记录物理日志不一样，它是逻辑日志。</p>
+<ol>
+<li>可以认为当delete一条记录时，undo log中会记录一条对应的insert记录，反之亦然</li>
+<li>当update一条记录时，它记录一条对应相反的update记录。当执行rolback时，就可以从undo og中的逻辑记录读取到相应的内容并进行回滚。<br><strong>undo log可以实现事务的一致性和原子性</strong></li>
+</ol>
+<p><strong>总结：</strong><br>undo log和redo log的区别</p>
+<ol>
+<li><p>redo log:记录的是数据页的物理变化，服务宕机可用来同步数据</p>
+</li>
+<li><p>undo log:记录的是逻辑日志，当事务回滚时，通过逆操作恢复原来的数据</p>
+</li>
+<li><p>redo log保证了事务的持久性，undolog保证了事务的原子性和一致性</p>
+</li>
+</ol>
+<h3 id="好的，事务中的隔离性是如何保证的呢"><a href="#好的，事务中的隔离性是如何保证的呢" class="headerlink" title="好的，事务中的隔离性是如何保证的呢?"></a>好的，事务中的隔离性是如何保证的呢?</h3><p>锁:排他锁(如一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁)<br>mvcc:多版本并发控制</p>
+<p><strong>解释一下MVCC</strong><br>全称 Multi-Version Concurrency Control，多版本并发控制。指维护一个数据的多个版本，使得读写操作没有冲突</p>
+<p>MVCC的具体实现，主要依赖于数据库记录中的隐式字段、undo log日志、readView。</p>
+<p><strong>MVCC–实现原理</strong></p>
+<ol>
+<li><p>记录中的隐藏字段</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/隐藏字段.jpg"></li>
+<li><p>undo log<br>回滚日志，在insert、update、delete的时候产生的便于数据回滚的日志。<br>当insert的时候，产生的undo log日志只在回滚时需要，在事务提交后，可被立即删除。<br>而update、delete的时候，产生的undo log日志不仅在回滚时需要，mvcc版本访问也需要，不会立即被删除。</p>
+</li>
+<li><p>undo log版本链</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/undolog链.jpg">
+不同事务或相同事务对同一条记录进行修改，会导致该记录的undolog生成一条记录版本链表，链表的头部是最新的旧记录，链表尾部是最早的旧记录。
+</li>
+<li><p>readview<br>ReadView(读视图)是 快照读 SQL执行时MVCC提取数据的依据，记录并维护系统当前活跃的事务(未提交的)id。<br><strong>当前读</strong><br>读取的是记录的最新版本，读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加锁。对于我们日常的操作，如:<br>select … lock in share mode(共享锁)，<br>select …for update、<br>update、 insert、 delete(排他锁)都是一种当前读。</p>
+</li>
+</ol>
+<p><strong>快照读</strong><br>简单的select(不加锁)就是快照读，快照读，读取的是记录数据的可见版本，有可能是历史数据，不加锁，是非阻塞读。<br>Read Committed: 每次select，都生成一个快照读。<br>Repeatable Read: 开启事务后第一个select语句才是快照读的地方。</p>
+<p>ReadView中包含了四个核心字段：<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/ReadView.jpg"></p>
+<p>版本链数据访问规则：<br>trx_id: 代表是当前事务ID</p>
+<ol>
+<li>trx_id &#x3D;&#x3D; creator_trx_id?可以访问该版本  成立，说明数据是当前这个事务更改的。</li>
+<li>trx_id &lt; min_trx_id?可以访问该版本  成立，说明数据已经提交了。</li>
+<li>trx_id&gt;max_trx_id ?不可以访问该版本  成立，说明该事务是在ReadView生成后才开启。</li>
+<li>min_trx_id &lt;&#x3D;trx_id&lt;&#x3D; max_trx_id?如果trx_id不在m_ids中是可以访问该版本的     成立，说明数据已经提交。<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/图.jpg"></li>
+</ol>
+<p>不同的隔离级别，生成ReadView的时机不同<br>READ COMMITTED: 在事务中每一次执行快照读时生成ReadView。<br>REPEATABLE READ: 仅在事务中第一次执行快照读时生成ReadView，后续复用该ReadView。</p>
+<p>RC隔离级别下，在事务中每一次执行快照读时生成ReadView。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/读视图.jpg"></p>
+<p><strong>总结：</strong><br>事务中的隔离性是如何保证的呢?(你解释一下MVCC)<br>MySQL中的多版本并发控制。指维护一个数据的多个版本，使得读写操作没有冲突<br>隐藏字段:<br>trx_id(事务id)，记录每一次操作的事务id，是自增的<br>roll_pointer(回滚指)，指向上一个版本的事务版本记录地址</p>
+<p>undo log:<br>回滚日志，存储老版本数据<br>版本链:多个事务并行操作某一行记录，记录不同事务修改数据的版本，通过roll_pointer指针形成一个链表</p>
+<p>readView解决的是一个事务查询选择版本的问题</p>
+<h2 id="MySQL主从同步原理"><a href="#MySQL主从同步原理" class="headerlink" title="MySQL主从同步原理"></a>MySQL主从同步原理</h2><p>MySQL主从复制的核心就是二进制日志<br>二进制日志(BINLOG)记录了所有的 DDL(数据定义语言)语句和 DML(数据操纵语言)语句，但不包括数据查询SELECT、SHOW)语句</p>
+<ol>
+<li>主库在事务提交时，会把数据变更记录在二进制日志文件 Binog 中</li>
+<li>从库读取主库的二进制日志文件 Binlog，写入到从库的中继日志 Relay Log</li>
+<li>从库重做中继日志中的事件，将改变反映它自己的数据</li>
+</ol>
+<h2 id="你们项目用过分库分表吗"><a href="#你们项目用过分库分表吗" class="headerlink" title="你们项目用过分库分表吗"></a>你们项目用过分库分表吗</h2><p>分库分表的时机</p>
+<ol>
+<li><strong>前提</strong>，项目业务数据逐渐增多，或业务发展比较迅速  单表的数据量达1000W或20G以后</li>
+<li>优化已解决不了性能问题(主从读写分离、查询索引…)</li>
+<li>IO瓶颈 (磁盘IO、网络IO)、CPU瓶颈(聚合查询、连接数太多)</li>
+</ol>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/拆分策略.jpg">
+
+<p><strong>垂直分库</strong><br>垂直分库:以表为依据，根据业务将不同表拆分到不同库中。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/垂直分库.jpg"><br>特点:</p>
+<ol>
+<li>按业务对数据分级管理、维护、监控、扩展</li>
+<li>在高并发下，提高磁盘IO和数据量连接数</li>
+</ol>
+<p><strong>垂直分表</strong><br>垂直分表:以字段为依据，根据字段属性将不同字段拆分到不同表中。<br>拆分规则：</p>
+<ol>
+<li>把不常用的字段单独放在一张表</li>
+<li>把text，blob等大字段拆分出来放在附表中<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/垂直分表.jpg">
+特点:</li>
+<li>冷热数据分离</li>
+<li>减少IO过渡争抢，两表互不影响</li>
+</ol>
+<p><strong>水平分库</strong><br>水平分库:将一个库的数据拆分到多个库中。<br>路由规则：</p>
+<ol>
+<li>根据id节点取模</li>
+<li>按id也就是范围路由，节点1(1-100万)节点2(100万-200万)<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/水平分库.jpg">
+特点:</li>
+<li>解决了单库大数量，高并发的性能瓶颈问题</li>
+<li>提高了系统的稳定性和可用性</li>
+</ol>
+<p><strong>水平分表</strong><br>水平分表:将一个表的数据拆分到多个表中(可以在同一个库内)。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/水平分表.jpg"><br>特点:</p>
+<ol>
+<li>优化单一表数据量过大而产生的性能问题;</li>
+<li>避免10争抢并减少锁表的几率;</li>
+</ol>
+<p>分库分表的策略有哪些<br><strong>新的问题和新的技术</strong><br>分库之后的问题:</p>
+<ol>
+<li>分布式事务一致性问题</li>
+<li>跨节点关联查询</li>
+<li>跨节点分页、排序函数</li>
+<li>主键避重</li>
+</ol>
+<p>分库分表中间件:</p>
+<ol>
+<li>sharding-sphere</li>
+<li>mycat<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/MySQL/分库分表.jpg"></li>
+</ol>
+<p><strong>总结：</strong><br>业务介绍：</p>
+<ol>
+<li>根据自己简历上的项目，想一个数据量较大业务(请求数多或业务累积大)</li>
+<li>达到了什么样的量级(单表1000万或超过20G)<br>具体拆分策略：<br>1，水平分库，将一个库的数据拆分到多个库中，解决海量数据存储和高并发的问题<br>2，水平分表，解决单表存储和性能的问题<br>3，垂直分库，根据业务进行拆分，高并发下提高磁盘IO和网络连接数<br>4，垂直分表，冷热数据分离，多表互不影响</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.velocityoc.top">Velocity</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.velocityoc.top/2023/11/17/%E9%9D%A2%E8%AF%95%E9%A2%98-MySQL%E7%AF%87/">https://www.velocityoc.top/2023/11/17/%E9%9D%A2%E8%AF%95%E9%A2%98-MySQL%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.velocityoc.top" target="_blank">Velocity的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="post_share"><div class="social-share" data-image="https://source.fomal.cc/img/default_cover_2.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/11/21/%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%A1%86%E6%9E%B6%E7%AF%87/" title="框架篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_4.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">框架篇</div></div></a></div><div class="next-post pull-right"><a href="/2023/11/15/%E9%9D%A2%E8%AF%95%E9%A2%98-Redis%E7%AF%87/" title="Redis篇"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://source.fomal.cc/img/default_cover_1.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Redis篇</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://www.fomal.cc/assets/head.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Velocity</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://gitee.com/Vel0city"><i class="fab fa-github"></i><span>🛴前往小家...</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/OC592" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:s996353092@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div id="welcome-info"></div><div class="item-headline"><span>公告</span></div><div class="announcement_content">欢迎来到我的博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL%E7%AF%87"><span class="toc-text">MySQL篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E4%BC%98%E5%8C%96"><span class="toc-text">MySQL-优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8MySQL%E4%B8%AD%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9A%E4%BD%8D%E6%85%A2%E6%9F%A5%E8%AF%A2"><span class="toc-text">在MySQL中，如何定位慢查询?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%A3%E8%BF%99%E4%B8%AASQL%E8%AF%AD%E5%8F%A5%E6%89%A7%E8%A1%8C%E5%BE%88%E6%85%A2-%E5%A6%82%E4%BD%95%E5%88%86%E6%9E%90%E5%91%A2"><span class="toc-text">那这个SQL语句执行很慢,如何分析呢?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E8%BF%87%E7%B4%A2%E5%BC%95%E5%90%97-%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95"><span class="toc-text">了解过索引吗?(什么是索引)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%9E%E8%81%9A%E7%B0%87%E7%B4%A2%E5%BC%95"><span class="toc-text">什么是聚簇索引什么是非聚簇索引?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88%E5%8F%AB%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95%E5%98%9B"><span class="toc-text">知道什么叫覆盖索引嘛?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MYSQL%E8%B6%85%E5%A4%A7%E5%88%86%E9%A1%B5%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86"><span class="toc-text">MYSQL超大分页怎么处理 ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E5%88%9B%E5%BB%BA%E5%8E%9F%E5%88%99%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-text">索引创建原则有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E7%B4%A2%E5%BC%95%E4%BC%9A%E5%A4%B1%E6%95%88%EF%BC%9F"><span class="toc-text">什么情况下索引会失效？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%88%E4%B8%80%E8%B0%88%E4%BD%A0%E5%AF%B9sql%E7%9A%84%E4%BC%98%E5%8C%96%E7%9A%84%E7%BB%8F%E9%AA%8C"><span class="toc-text">谈一谈你对sql的优化的经验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E4%BA%8B%E5%8A%A1"><span class="toc-text">MySQL-事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88-%E5%8F%AF%E4%BB%A5%E8%AF%A6%E7%BB%86%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%90%97"><span class="toc-text">事务的特性是什么?可以详细说一下吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ACID%E6%98%AF%E4%BB%80%E4%B9%88-%E5%8F%AF%E4%BB%A5%E8%AF%A6%E7%BB%86%E8%AF%B4%E4%B8%80%E4%B8%8B%E5%90%97"><span class="toc-text">ACID是什么? 可以详细说一下吗?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%B8%A6%E6%9D%A5%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98-%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%E8%BF%99%E4%BA%9B%E9%97%AE%E9%A2%98%E5%91%A2-MySQL%E7%9A%84%E9%BB%98%E8%AE%A4%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E6%98%AF"><span class="toc-text">并发事务带来哪些问题? 怎么解决这些问题呢? MySQL的默认隔离级别是?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undo-log%E5%92%8Credo-log%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">undo log和redo log的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A5%BD%E7%9A%84%EF%BC%8C%E4%BA%8B%E5%8A%A1%E4%B8%AD%E7%9A%84%E9%9A%94%E7%A6%BB%E6%80%A7%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%9A%84%E5%91%A2"><span class="toc-text">好的，事务中的隔离性是如何保证的呢?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5%E5%8E%9F%E7%90%86"><span class="toc-text">MySQL主从同步原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E4%BB%AC%E9%A1%B9%E7%9B%AE%E7%94%A8%E8%BF%87%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%90%97"><span class="toc-text">你们项目用过分库分表吗</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Velocity</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"> </use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><div class="js-pjax" id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="fa fa-search"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="javascript:rmf.saveAs()"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:randomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:switchNightMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="/personal/about/"><i class="fa fa-info-circle"></i><span>关于博客</span></a><a class="rightMenu-item" href="javascript:toggleWinbox();"><i class="fas fa-cog"></i><span>美化设置</span></a><a class="rightMenu-item" href="javascript:rmf.fullScreen();"><i class="fas fa-expand"></i><span>切换全屏</span></a><a class="rightMenu-item" href="javascript:window.print();"><i class="fa-solid fa-print"></i><span>打印页面</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script src="/js/sun_moon.js" async></script><script type="text/javascript" src="https://unpkg.zhimg.com/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script><script defer data-pjax src="/js/cat.js"></script><div id="aplayer-oSEOhviA" class="aplayer no-destroy" data-id="3778678" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listfolded="true" data-mode="random" data-autoplay="true" data-preload="auto" data-theme="#00ccff" data-volume="0.1" mutex="true" ></div><script async src="/js/fps.js"></script><script type="text/javascript" src="/js/rightmenu.js"></script><script async data-pjax src="/js/txmap.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="50" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = '832fad21f3d844c3a850e67d57195bb7';
+  var gaud_map_key = '0f1a2fe4d9d5652248a0f004670e94d7';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v6.2.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.3.1" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用多线部署，主线路托管于Vercel" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://dashboard.4everland.org/" style="margin-inline:5px" data-title="本站采用多线部署，备用线路托管于4EVERLAND" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Hosted-4EVERLAND-22DDDD?style=flat&amp;logo=IPFS" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":100,"height":200,"vOffset":400},"mobile":{"show":true,"scale":0.5},"log":false});</script></body></html>
